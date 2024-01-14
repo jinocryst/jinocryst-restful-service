@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.1'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'net.jinocryst'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // @Valid 적용
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Mybatis
+    //implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+    //testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
+
+    // JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+
+    // devtools
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // HATEOAS
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+
+    // Actuator
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    //Parent
+    implementation 'org.springframework.boot:spring-boot-starter-parent:3.2.1'
+
+    // HAL Explorer (API 메타정보를 링크로 추가)
+    implementation 'org.springframework.data:spring-data-rest-hal-explorer'
+
+    // API Doc
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+
+    //runtimeOnly 'org.postgresql:postgresql'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // XML Format
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.4'
+    implementation 'com.h2database:h2:2.2.224'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
